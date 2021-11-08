@@ -14,7 +14,11 @@ socket.on('connect', function() {
   
 });
 
+socket.on('data', function(obj) {
+  console.log(obj);
+  flyFlying(obj.x,obj.y)
 
+});
 
 
 
@@ -48,11 +52,7 @@ function setup() {
   //mySound.delayTime(3)
   mySound.playMode('restart')
   mySound.play()
-  socket.on('data', function(obj) {
-    console.log(obj);
-    flyFlying(obj.x,obj.y)
   
-  });
 
 }
 
@@ -75,12 +75,12 @@ function draw() {
   if (flySprite.position.y> height){
     flySprite.position.y=random(height-100)
     count=0
-  flyPosX = flySprite.position.x;
-  flyPosY = flySprite.position.y;
-  lastFlyX = 0;
-  lastFlyY = 0;
-  flySprite.rotation=0
-  speed1=0
+    flyPosX = flySprite.position.x;
+    flyPosY = flySprite.position.y;
+    lastFlyX = 0;
+    lastFlyY = 0;
+    flySprite.rotation=0
+    speed1=0
     flying=true
     flySprite.animation.play()
     flySprite.setVelocity(0,0)
